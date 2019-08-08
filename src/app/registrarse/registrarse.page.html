@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <div class="loginpanel">
+      <div class="txt">
+        <input id="user" type="text" placeholder="Nombre de usuario" />
+        <label for="user" class="entypo-user"></label>
+      </div>
+      <div class="txt">
+        <input id="" type="password" placeholder="Correo electronico" />
+        <label for="pwd" class="entypo-mail"></label>
+      </div>
+      <div class="txt">
+        <input id="pwd" type="password" placeholder="Contraseña" />
+        <label for="pwd" class="entypo-lock"></label>
+      </div>
+      <div class="txt">
+        <input id="pwd" type="password" placeholder="Repita Contraseña" />
+        <label for="pwd" class="entypo-lock"></label>
+      </div>
+      <div class="buttons">
+        <input type="button" (click)="go('/login')" value="Registrarse" />
+      </div>
+      <div class="buttons">
+        <input type="button" (click)="go('/login')" value="Cancelar" />
+      </div>
+
+      <div class="hr">
+        <div></div>
+        <div>Relevamiento Visual</div>
+        <div></div>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-content>

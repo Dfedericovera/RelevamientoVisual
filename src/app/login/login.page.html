@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ingresar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <!--   Default Segment OTROS ICONOS DE USUARIOS
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="friends">
+      <ion-fab-button color="light" size="small">1</ion-fab-button>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-fab-button color="light" size="small">2</ion-fab-button>
+    </ion-segment-button>
+    <ion-segment-button value="asd">
+      <ion-fab-button color="light" size="small">3</ion-fab-button>
+    </ion-segment-button>
+    <ion-segment-button value="qwe">
+      <ion-fab-button color="light" size="small">4</ion-fab-button>
+    </ion-segment-button>
+    <ion-segment-button value="asdasd">
+      <ion-fab-button color="light" size="small">5</ion-fab-button>
+    </ion-segment-button>
+  </ion-segment> -->
+  <!-- <ion-icon name="contact"></ion-icon> Icono -->
+  <ion-segment scrollable>
+    
+    <ion-segment-button (click)="llenarFormulario(user.correo,user.clave)" *ngFor="let user of usuarios">
+      <ion-avatar>
+        <ion-img [src]="user.img">
+        </ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2> <b>{{user.correo}}</b> </h2>
+        <h3>{{user.perfil}}</h3>
+        <p> {{user.sexo}}</p>
+      </ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <div class="loginpanel">
+    <div class="txt">
+      <input id="user" type="text" [(ngModel)]='email' placeholder="Correo electronico" />
+      <label for="user" class="entypo-user"></label>
+    </div>
+    <div class="txt">
+      <input id="pwd" type="password" [(ngModel)]='password' placeholder="Contraseña" />
+      <label for="pwd" class="entypo-lock"></label>
+    </div>
+    <div class="buttons">
+      <input type="button" (click)="onSubmitlogin()" value="Ingresar" />
+      <span>
+        <a href="javascript:void(0)" (click)="go('/registrarse')" class="entypo-user-add register">Registrarse</a>
+      </span>
+    </div>
+
+    <div class="hr">
+      <div></div>
+      <div>OR</div>
+      <div></div>
+    </div>
+
+    <div class="social">
+      <a href="javascript:void(0)" class="facebook"></a>
+      <a href="javascript:void(0)" class="twitter"></a>
+      <a href="javascript:void(0)" class="googleplus"></a>
+    </div>
+  </div>
+
+</ion-content>
