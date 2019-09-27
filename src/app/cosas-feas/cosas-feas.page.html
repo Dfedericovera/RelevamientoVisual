@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cosasFeas</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+      <div  style="text-align: center;">
+        <ion-title >Cosas Feas</ion-title>
+      </div>    
+      <ion-button float-right routerLink="/home" class="Atras">
+        <!-- routerLink="/cosas-feas" -->
+        <ion-icon slot="start" name="undo"></ion-icon>
+        atras
+      </ion-button>
+      <!-- camara -->
+      <!-- <p aling="center"><img src="{{MiFoto}}" alt="No se puede mostrar la foto"> </p> -->
+      <div ><!-- style="text-align: center;" -->
+        <ion-button center (click)=Showcamera()>
+          <ion-icon slot="start" name="camera"></ion-icon>
+          CAMARA
+        </ion-button>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-slides [options]="sliderOpts">
+      <ion-slide *ngFor="let img of [1,2,3]">
+        <img src="assets/imagenes/{{img}}.jpg" tappable (click)="openPreview(img)">
+      </ion-slide>
+    </ion-slides>
+  </ion-content>

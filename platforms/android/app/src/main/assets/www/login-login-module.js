@@ -58,7 +58,7 @@ var LoginPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>login</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"loginpanel\">\n    <div class=\"txt\">\n      <input id=\"user\" type=\"text\" placeholder=\"Nombre de usuario\" />\n      <label for=\"user\" class=\"entypo-user\"></label>\n    </div>\n    <div class=\"txt\">\n      <input id=\"pwd\" type=\"password\" placeholder=\"Contraseña\" />\n      <label for=\"pwd\" class=\"entypo-lock\"></label>\n    </div>\n    <div class=\"buttons\">\n      <input type=\"button\" (click)=\"go('/home')\" value=\"Ingresar\" />\n      <span>\n        <a href=\"javascript:void(0)\" (click)=\"go('/registrarse')\" class=\"entypo-user-add register\">Registrarse</a>\n      </span>\n    </div>\n\n    <div class=\"hr\">\n      <div></div>\n      <div>OR</div>\n      <div></div>\n    </div>\n\n    <div class=\"social\">\n      <a href=\"javascript:void(0)\" class=\"facebook\"></a>\n      <a href=\"javascript:void(0)\" class=\"twitter\"></a>\n      <a href=\"javascript:void(0)\" class=\"googleplus\"></a>\n    </div>\n  </div>\n\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Ingresar</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<ion-content>\r\n\r\n  <!--   Default Segment OTROS ICONOS DE USUARIOS\r\n  <ion-segment (ionChange)=\"segmentChanged($event)\">\r\n    <ion-segment-button value=\"friends\">\r\n      <ion-fab-button color=\"light\" size=\"small\">1</ion-fab-button>\r\n    </ion-segment-button>\r\n    <ion-segment-button value=\"enemies\">\r\n      <ion-fab-button color=\"light\" size=\"small\">2</ion-fab-button>\r\n    </ion-segment-button>\r\n    <ion-segment-button value=\"asd\">\r\n      <ion-fab-button color=\"light\" size=\"small\">3</ion-fab-button>\r\n    </ion-segment-button>\r\n    <ion-segment-button value=\"qwe\">\r\n      <ion-fab-button color=\"light\" size=\"small\">4</ion-fab-button>\r\n    </ion-segment-button>\r\n    <ion-segment-button value=\"asdasd\">\r\n      <ion-fab-button color=\"light\" size=\"small\">5</ion-fab-button>\r\n    </ion-segment-button>\r\n  </ion-segment> -->\r\n  <!-- <ion-icon name=\"contact\"></ion-icon> Icono -->\r\n  <ion-segment scrollable>\r\n    \r\n    <ion-segment-button (click)=\"llenarFormulario(user.correo,user.clave)\" *ngFor=\"let user of usuarios\">\r\n      <ion-avatar>\r\n        <ion-img [src]=\"user.img\">\r\n        </ion-img>\r\n      </ion-avatar>\r\n      <ion-label>\r\n        <h2> <b>{{user.correo}}</b> </h2>\r\n        <h3>{{user.perfil}}</h3>\r\n        <p> {{user.sexo}}</p>\r\n      </ion-label>\r\n    </ion-segment-button>\r\n\r\n  </ion-segment>\r\n\r\n  <div class=\"loginpanel\">\r\n    <div class=\"txt\">\r\n      <input id=\"user\" type=\"text\" [(ngModel)]='email' placeholder=\"Correo electronico\" />\r\n      <label for=\"user\" class=\"entypo-user\"></label>\r\n    </div>\r\n    <div class=\"txt\">\r\n      <input id=\"pwd\" type=\"password\" [(ngModel)]='password' placeholder=\"Contraseña\" />\r\n      <label for=\"pwd\" class=\"entypo-lock\"></label>\r\n    </div>\r\n    <div class=\"buttons\">\r\n      <input type=\"button\" (click)=\"onSubmitlogin()\" value=\"Ingresar\" />\r\n      <span>\r\n        <a href=\"javascript:void(0)\" (click)=\"go('/registrarse')\" class=\"entypo-user-add register\">Registrarse</a>\r\n      </span>\r\n    </div>\r\n\r\n    <div class=\"hr\">\r\n      <div></div>\r\n      <div>OR</div>\r\n      <div></div>\r\n    </div>\r\n\r\n    <div class=\"social\">\r\n      <a href=\"javascript:void(0)\" class=\"facebook\"></a>\r\n      <a href=\"javascript:void(0)\" class=\"twitter\"></a>\r\n      <a href=\"javascript:void(0)\" class=\"googleplus\"></a>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>"
 
 /***/ }),
 
@@ -86,17 +86,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _servicios_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/auth.service */ "./src/app/servicios/auth.service.ts");
+/* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
 
 
 
+
+
+//import { MenuController } from '@ionic/angular';
 var LoginPage = /** @class */ (function () {
-    function LoginPage(router) {
+    function LoginPage(router, authService, usuariosService) {
         this.router = router;
+        this.authService = authService;
+        this.usuariosService = usuariosService;
+        /*
+          usuario0 = uncorreo@uncorreo.com, uncorreo
+          usuario1 = usuario1@users.com, usuario1
+          usuario2 = usuario2@users.com, usuario2
+          usuario3 = usuario3@users.com, usuario3
+        */
+        this.usuarios = [];
+        this.email = 'uncorreo@uncorreo.com';
+        this.password = 'uncorreo';
     }
     LoginPage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.usuariosService.getUsuarios().subscribe(function (usuarios) {
+            _this.usuarios = usuarios;
+        });
     };
     LoginPage.prototype.go = function (ruta) {
         this.router.navigateByUrl(ruta);
+    };
+    LoginPage.prototype.onSubmitlogin = function () {
+        var _this = this;
+        this.authService.login(this.email, this.password).then(function (res) {
+            _this.router.navigateByUrl('/home');
+        }).catch(function (err) { return alert('Los datos son incorrectos o no existe el usuario'); });
+    };
+    LoginPage.prototype.llenarFormulario = function (correo, clave) {
+        this.email = correo;
+        this.password = clave;
     };
     LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -104,7 +134,7 @@ var LoginPage = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.page.html */ "./src/app/login/login.page.html"),
             styles: [__webpack_require__(/*! ./login.page.scss */ "./src/app/login/login.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _servicios_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuariosService"]])
     ], LoginPage);
     return LoginPage;
 }());

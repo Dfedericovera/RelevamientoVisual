@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-cosas-feas',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CosasFeasPage implements OnInit {
 
-  constructor() { }
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+  sliderOpts ={
+    zoom:false,
+    slidesPerView:1.5,
+    centeredSlides:true,
+    spaceBetween:20
+  }
+  MiFoto:any;
+
+  constructor(private camera: Camera) { }
 
   ngOnInit() {
+  }
+
+  Showcamera(){
+    this.camera.getPicture(this.options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.MiFoto = 'data:image/jpeg;base64,' + imageData;
+     }, (err) => {
+      // Handle error
+     });
   }
 
 }

@@ -833,12 +833,22 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./cosas-feas/cosas-feas.module": [
+		"./src/app/cosas-feas/cosas-feas.module.ts",
+		"cosas-feas-cosas-feas-module"
+	],
+	"./cosas-lindas/cosas-lindas.module": [
+		"./src/app/cosas-lindas/cosas-lindas.module.ts",
+		"cosas-lindas-cosas-lindas-module"
+	],
 	"./home/home.module": [
 		"./src/app/home/home.module.ts",
+		"common",
 		"home-home-module"
 	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
+		"common",
 		"login-login-module"
 	],
 	"./registrarse/registrarse.module": [
@@ -855,7 +865,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var id = ids[0];
 		return __webpack_require__(id);
 	});
@@ -881,14 +891,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./guards/auth.guard */ "./src/app/guards/auth.guard.ts");
+/* harmony import */ var _guards_nologin_guard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./guards/nologin.guard */ "./src/app/guards/nologin.guard.ts");
+
+
 
 
 
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-    { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+    { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]] },
+    { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [_guards_nologin_guard__WEBPACK_IMPORTED_MODULE_4__["NologinGuard"]] },
     { path: 'registrarse', loadChildren: './registrarse/registrarse.module#RegistrarsePageModule' },
+    { path: 'cosas-lindas', loadChildren: './cosas-lindas/cosas-lindas.module#CosasLindasPageModule' },
+    { path: 'cosas-feas', loadChildren: './cosas-feas/cosas-feas.module#CosasFeasPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -991,6 +1007,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _ingresar_ingresar_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ingresar/ingresar.component */ "./src/app/ingresar/ingresar.component.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/index.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+
+
+
+
 
 
 
@@ -1011,11 +1035,19 @@ var AppModule = /** @class */ (function () {
                 _ingresar_ingresar_component__WEBPACK_IMPORTED_MODULE_9__["IngresarComponent"]
             ],
             entryComponents: [],
-            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]],
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+                _angular_fire__WEBPACK_IMPORTED_MODULE_11__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_10__["firebaseConfig"]),
+                _angular_fire_auth__WEBPACK_IMPORTED_MODULE_12__["AngularFireAuthModule"],
+                _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"]
+            ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
+                { provide: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["FirestoreSettingsToken"], useValue: {} }
             ],
             exports: [
                 _ingresar_ingresar_component__WEBPACK_IMPORTED_MODULE_9__["IngresarComponent"]
@@ -1030,6 +1062,116 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/guards/auth.guard.ts":
+/*!**************************************!*\
+  !*** ./src/app/guards/auth.guard.ts ***!
+  \**************************************/
+/*! exports provided: AuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(AFauth, router) {
+        this.AFauth = AFauth;
+        this.router = router;
+    }
+    AuthGuard.prototype.canActivate = function (next, state) {
+        var _this = this;
+        return this.AFauth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (auth) {
+            if (Object(util__WEBPACK_IMPORTED_MODULE_4__["isNullOrUndefined"])(auth)) {
+                _this.router.navigate(['/login']);
+                return false;
+            }
+            else {
+                return true;
+            }
+            /* console.log(auth);
+            return true; */
+        }));
+    };
+    AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/guards/nologin.guard.ts":
+/*!*****************************************!*\
+  !*** ./src/app/guards/nologin.guard.ts ***!
+  \*****************************************/
+/*! exports provided: NologinGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NologinGuard", function() { return NologinGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+
+
+var NologinGuard = /** @class */ (function () {
+    function NologinGuard(AFauth, router) {
+        this.AFauth = AFauth;
+        this.router = router;
+    }
+    NologinGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return this.AFauth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (auth) {
+            if (Object(util__WEBPACK_IMPORTED_MODULE_4__["isNullOrUndefined"])(auth)) {
+                return true;
+            }
+            else {
+                _this.router.navigate(['/home']);
+                return false;
+            }
+            /* console.log(auth);
+            return true; */
+        }));
+    };
+    NologinGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+    ], NologinGuard);
+    return NologinGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/ingresar/ingresar.component.html":
 /*!**************************************************!*\
   !*** ./src/app/ingresar/ingresar.component.html ***!
@@ -1037,7 +1179,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  ingresar works!\n</p>\n"
+module.exports = "<ion-menu side=\"start\" menuId=\"first\">\r\n    <ion-header>\r\n      <ion-toolbar color=\"primary\">\r\n        <ion-title>Start Menu</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu>\r\n  \r\n  <ion-menu side=\"start\" menuId=\"custom\" class=\"my-custom-menu\">\r\n    <ion-header>\r\n      <ion-toolbar color=\"tertiary\">\r\n        <ion-title>Custom Menu</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu>\r\n  \r\n  <ion-menu side=\"end\" type=\"push\">\r\n    <ion-header>\r\n      <ion-toolbar color=\"danger\">\r\n        <ion-title>End Menu</ion-title>\r\n      </ion-toolbar>\r\n    </ion-header>\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n        <ion-item>Menu Item</ion-item>\r\n      </ion-list>\r\n    </ion-content>\r\n  </ion-menu>\r\n  \r\n  <ion-router-outlet main></ion-router-outlet>"
 
 /***/ }),
 
@@ -1048,7 +1190,7 @@ module.exports = "<p>\n  ingresar works!\n</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2luZ3Jlc2FyL2luZ3Jlc2FyLmNvbXBvbmVudC5zY3NzIn0= */"
+module.exports = ".my-custom-menu {\n  --width: 500px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5ncmVzYXIvRDpcXEZlZGVcXEZhY3VcXDR0b1xcQXBsaWNhY2lvbmVzXFxQUFNcXFJlbGV2YW1pZW50b1Zpc3VhbC9zcmNcXGFwcFxcaW5ncmVzYXJcXGluZ3Jlc2FyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBUSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvaW5ncmVzYXIvaW5ncmVzYXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubXktY3VzdG9tLW1lbnUge1xyXG4gICAgLS13aWR0aDogNTAwcHg7XHJcbiAgfSJdfQ== */"
 
 /***/ }),
 
@@ -1064,19 +1206,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IngresarComponent", function() { return IngresarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 var IngresarComponent = /** @class */ (function () {
-    function IngresarComponent() {
+    function IngresarComponent(menu) {
+        this.menu = menu;
     }
     IngresarComponent.prototype.ngOnInit = function () { };
+    IngresarComponent.prototype.openFirst = function () {
+        this.menu.enable(true, 'first');
+        this.menu.open('first');
+    };
+    IngresarComponent.prototype.openEnd = function () {
+        this.menu.open('end');
+    };
+    IngresarComponent.prototype.openCustom = function () {
+        this.menu.enable(true, 'custom');
+        this.menu.open('custom');
+    };
     IngresarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-ingresar',
             template: __webpack_require__(/*! ./ingresar.component.html */ "./src/app/ingresar/ingresar.component.html"),
             styles: [__webpack_require__(/*! ./ingresar.component.scss */ "./src/app/ingresar/ingresar.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
     ], IngresarComponent);
     return IngresarComponent;
 }());
@@ -1089,17 +1245,27 @@ var IngresarComponent = /** @class */ (function () {
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
   \*****************************************/
-/*! exports provided: environment */
+/*! exports provided: environment, firebaseConfig */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "firebaseConfig", function() { return firebaseConfig; });
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false
+};
+var firebaseConfig = {
+    apiKey: "AIzaSyCnZTEvBCaMn2etLPuWu2xLX9f92G69MV4",
+    authDomain: "relevamientovisual1.firebaseapp.com",
+    databaseURL: "https://relevamientovisual1.firebaseio.com",
+    projectId: "relevamientovisual1",
+    storageBucket: "relevamientovisual1.appspot.com",
+    messagingSenderId: "7418398984",
+    appId: "1:7418398984:web:a80edaadf3c7f0a1"
 };
 /*
  * For easier debugging in development mode, you can import the following file

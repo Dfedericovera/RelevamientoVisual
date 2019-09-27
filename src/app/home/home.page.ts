@@ -4,6 +4,9 @@ import { NavDelegate } from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
 import { auth } from 'firebase';
 import { UsuariosService } from '../servicios/usuarios.service';
+import { Platform } from "@ionic/angular";
+import { AlertController } from '@ionic/angular';
+
 
 
 interface user {
@@ -21,10 +24,19 @@ interface user {
 })
 export class HomePage implements OnInit {
 
+  subscribe: any;
+  constructor(
+    private platform: Platform,
+    private router: Router,
+    private authservice: AuthService,
+    private usuariosService: UsuariosService,    
+    public alertController: AlertController,
+    ) {
+  }
 
-  constructor(private router: Router, private authservice: AuthService, private usuariosService: UsuariosService) { }
-
-  ngOnInit() {    
+  ngOnInit() {
+    
+    this.backButtonEvent();
   }
 
   go(ruta: string, valor?: string) {
@@ -37,5 +49,62 @@ export class HomePage implements OnInit {
       this.router.navigate(['/login']);
     })
   }
+
+  
+
+  backButtonEvent(){
+    this.platform.backButton.subscribe(() => { 
+      
+      this.presentAlertConfirm();
+    }
+    );
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Decea salir de la aplicacion?',
+      message: 'Hasta luego <strong>!</strong>!!!',
+      buttons: [
+        {
+          text: 'NO',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {            
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'SI',
+          handler: () => {
+            navigator["app"].exitApp();
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
