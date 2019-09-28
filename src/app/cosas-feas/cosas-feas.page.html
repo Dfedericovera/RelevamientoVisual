@@ -19,9 +19,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-slides [options]="sliderOpts">
-      <ion-slide *ngFor="let img of [1,2,3]">
-        <img src="assets/imagenes/{{img}}.jpg" tappable (click)="openPreview(img)">
-      </ion-slide>
-    </ion-slides>
-  </ion-content>
+      <ion-slides [options]="sliderOpts">
+        <ion-slide *ngFor="let img of [1,2,3]">
+          <img src="assets/imagenes/{{img}}.jpg" tappable (click)="openPreview(img)">
+        </ion-slide>
+      </ion-slides>
+      <div class=“foto”>
+        <img [src]=MiFoto *ngIf=MiFoto />
+      </div>
+    
+    </ion-content>

@@ -87,18 +87,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _servicios_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../servicios/auth.service */ "./src/app/servicios/auth.service.ts");
 /* harmony import */ var _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../servicios/usuarios.service */ "./src/app/servicios/usuarios.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
 
 
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(router, authservice, usuariosService) {
+    function HomePage(platform, router, authservice, usuariosService, alertController) {
+        this.platform = platform;
         this.router = router;
         this.authservice = authservice;
         this.usuariosService = usuariosService;
+        this.alertController = alertController;
     }
     HomePage.prototype.ngOnInit = function () {
+        this.backButtonEvent();
     };
     HomePage.prototype.go = function (ruta, valor) {
         //ruta=ruta+'/'+this.valor; y modificar el routingModule par agregarle el parametro o this.router.navigate(['/ruta',this.valor]);
@@ -110,13 +116,58 @@ var HomePage = /** @class */ (function () {
             _this.router.navigate(['/login']);
         });
     };
+    HomePage.prototype.backButtonEvent = function () {
+        var _this = this;
+        this.platform.backButton.subscribe(function () {
+            _this.presentAlertConfirm();
+        });
+    };
+    HomePage.prototype.presentAlertConfirm = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Decea salir de la aplicacion?',
+                            message: 'Hasta luego <strong>!</strong>!!!',
+                            buttons: [
+                                {
+                                    text: 'NO',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function (blah) {
+                                        console.log('Confirm Cancel: blah');
+                                    }
+                                }, {
+                                    text: 'SI',
+                                    handler: function () {
+                                        navigator["app"].exitApp();
+                                        console.log('Confirm Okay');
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.page.html */ "./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _servicios_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuariosService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _servicios_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _servicios_usuarios_service__WEBPACK_IMPORTED_MODULE_4__["UsuariosService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"]])
     ], HomePage);
     return HomePage;
 }());

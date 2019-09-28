@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <div  style="text-align: center;">
-      <ion-title >Cosas Lindas</ion-title>
-    </div>    
+    <div style="text-align: center;">
+      <ion-title>Cosas Lindas</ion-title>
+    </div>
     <ion-button float-right routerLink="/home" class="Atras">
       <!-- routerLink="/cosas-feas" -->
       <ion-icon slot="start" name="undo"></ion-icon>
@@ -10,7 +10,8 @@
     </ion-button>
     <!-- camara -->
     <!-- <p aling="center"><img src="{{MiFoto}}" alt="No se puede mostrar la foto"> </p> -->
-    <div ><!-- style="text-align: center;" -->
+    <div>
+      <!-- style="text-align: center;" -->
       <ion-button center (click)=Showcamera()>
         <ion-icon slot="start" name="camera"></ion-icon>
         CAMARA
@@ -24,4 +25,8 @@
       <img src="assets/imagenes/{{img}}.jpg" tappable (click)="openPreview(img)">
     </ion-slide>
   </ion-slides>
+  <div class=“foto”>
+    <img [src]=MiFoto *ngIf=MiFoto />
+  </div>
+
 </ion-content>
