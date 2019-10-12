@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterLink } from '@angular/router';
+import { timer } from 'rxjs';
+
 
 
 @Component({
@@ -11,6 +13,9 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  showSplash = true;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -24,6 +29,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      timer(3000).subscribe(()=>this.showSplash = false);
     });
   }
 
