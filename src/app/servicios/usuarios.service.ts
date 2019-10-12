@@ -27,4 +27,23 @@ export class UsuariosService {
     }))
   }
 
+  getImagenesLindas(){
+    return this.db.collection('imagenes').snapshotChanges().pipe(map(users =>{
+      return users.map(a => {
+        const data = a.payload.doc.data() as {id:string;};
+        return data;
+      })
+    }))
+  }
+  getImagenesFeas(){
+    return this.db.collection('imagenesFeas').snapshotChanges().pipe(map(users =>{
+      return users.map(a => {
+        const data = a.payload.doc.data() as {id:string;};
+        return data;
+      })
+    }))
+  }
+
+  
+
 }
