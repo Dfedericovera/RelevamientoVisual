@@ -68,7 +68,7 @@ module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Relevamiento
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-button {\n  position: relative; }\n\n.grande {\n  height: 100%;\n  width: 100%; }\n\n.img:hover {\n  box-shadow: 0px 0px 66px -11px rgba(0, 0, 0, 0.67); }\n\n.img:active {\n  box-shadow: 0px 2px 8px 8px #3b8f51; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9EOlxcRmVkZVxcRmFjdVxcNHRvXFxBcGxpY2FjaW9uZXNcXFBQU1xcUmVsZXZhbWllbnRvVmlzdWFsL3NyY1xcYXBwXFxob21lXFxob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFrQixFQUFBOztBQUd0QjtFQUNJLFlBQVk7RUFDWixXQUFXLEVBQUE7O0FBRWY7RUFHSSxrREFBK0MsRUFBQTs7QUFHbkQ7RUFHSSxtQ0FBNkMsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tYnV0dG9ue1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlOyBcclxufVxyXG5cclxuLmdyYW5kZXtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcbi5pbWc6aG92ZXJ7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IDBweCAwcHggNjZweCAtMTFweCByZ2JhKDAsMCwwLDAuNjcpO1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiAwcHggMHB4IDY2cHggLTExcHggcmdiYSgwLDAsMCwwLjY3KTtcclxuICAgIGJveC1zaGFkb3c6IDBweCAwcHggNjZweCAtMTFweCByZ2JhKDAsMCwwLDAuNjcpO1xyXG59XHJcblxyXG4uaW1nOmFjdGl2ZXtcclxuICAgIC13ZWJraXQtYm94LXNoYWRvdzogMHB4IDJweCA4cHggOHB4IHJnYmEoNTksMTQzLDgxLDEpO1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiAwcHggMnB4IDhweCA4cHggcmdiYSg1OSwxNDMsODEsMSk7XHJcbiAgICBib3gtc2hhZG93OiAwcHggMnB4IDhweCA4cHggcmdiYSg1OSwxNDMsODEsMSk7XHJcbn0iXX0= */"
+module.exports = "ion-button {\n  position: relative; }\n\n.grande {\n  height: 100%;\n  width: 100%; }\n\n.img:hover {\n  box-shadow: 0px 0px 66px -11px rgba(0, 0, 0, 0.67); }\n\n.img:active {\n  box-shadow: 0px 2px 8px 8px #3b8f51; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9EOlxcRmVkZVxcRmFjdVxcNHRvXFxBcGxpY2FjaW9uZXNcXFBQU1xcQXBsaWNhY2lvbmVzVFBcXFJlbGV2YW1pZW50b1Zpc3VhbC9zcmNcXGFwcFxcaG9tZVxcaG9tZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBa0IsRUFBQTs7QUFHdEI7RUFDSSxZQUFZO0VBQ1osV0FBVyxFQUFBOztBQUVmO0VBR0ksa0RBQStDLEVBQUE7O0FBR25EO0VBR0ksbUNBQTZDLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWJ1dHRvbntcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsgXHJcbn1cclxuXHJcbi5ncmFuZGV7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4uaW1nOmhvdmVye1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiAwcHggMHB4IDY2cHggLTExcHggcmdiYSgwLDAsMCwwLjY3KTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogMHB4IDBweCA2NnB4IC0xMXB4IHJnYmEoMCwwLDAsMC42Nyk7XHJcbiAgICBib3gtc2hhZG93OiAwcHggMHB4IDY2cHggLTExcHggcmdiYSgwLDAsMCwwLjY3KTtcclxufVxyXG5cclxuLmltZzphY3RpdmV7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IDBweCAycHggOHB4IDhweCByZ2JhKDU5LDE0Myw4MSwxKTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogMHB4IDJweCA4cHggOHB4IHJnYmEoNTksMTQzLDgxLDEpO1xyXG4gICAgYm94LXNoYWRvdzogMHB4IDJweCA4cHggOHB4IHJnYmEoNTksMTQzLDgxLDEpO1xyXG59Il19 */"
 
 /***/ }),
 
@@ -170,6 +170,66 @@ var HomePage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"]])
     ], HomePage);
     return HomePage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicios/usuarios.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/servicios/usuarios.service.ts ***!
+  \***********************************************/
+/*! exports provided: UsuariosService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosService", function() { return UsuariosService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
+
+
+
+var UsuariosService = /** @class */ (function () {
+    function UsuariosService(db) {
+        this.db = db;
+    }
+    UsuariosService.prototype.getUsuarios = function () {
+        return this.db.collection('usuarios').snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (users) {
+            return users.map(function (a) {
+                var data = a.payload.doc.data();
+                data.id = a.payload.doc.id;
+                return data;
+            });
+        }));
+    };
+    UsuariosService.prototype.getImagenesLindas = function () {
+        return this.db.collection('imagenes').snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (users) {
+            return users.map(function (a) {
+                var data = a.payload.doc.data();
+                return data;
+            });
+        }));
+    };
+    UsuariosService.prototype.getImagenesFeas = function () {
+        return this.db.collection('imagenesFeas').snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (users) {
+            return users.map(function (a) {
+                var data = a.payload.doc.data();
+                return data;
+            });
+        }));
+    };
+    UsuariosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
+    ], UsuariosService);
+    return UsuariosService;
 }());
 
 

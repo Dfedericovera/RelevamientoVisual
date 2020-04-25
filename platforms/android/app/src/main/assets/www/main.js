@@ -835,10 +835,14 @@ module.exports = webpackAsyncContext;
 var map = {
 	"./cosas-feas/cosas-feas.module": [
 		"./src/app/cosas-feas/cosas-feas.module.ts",
+		"default~cosas-feas-cosas-feas-module~cosas-lindas-cosas-lindas-module",
+		"common",
 		"cosas-feas-cosas-feas-module"
 	],
 	"./cosas-lindas/cosas-lindas.module": [
 		"./src/app/cosas-lindas/cosas-lindas.module.ts",
+		"default~cosas-feas-cosas-feas-module~cosas-lindas-cosas-lindas-module",
+		"common",
 		"cosas-lindas-cosas-lindas-module"
 	],
 	"./home/home.module": [
@@ -933,7 +937,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n"
+module.exports = "<ion-app>\n  <h1 *ngIf=\"showSplash\" class=\"h1\">Vera Daniel Federico</h1>\n  <div *ngIf=\"showSplash\" class=\"splash\">    \n      <div class=\"spinner\">\n          <div class=\"cube1\"></div>\n          <div class=\"cube2\"></div>\n      </div>    \n  </div>\n  <h1 *ngIf=\"showSplash\" class=\"h1\">4ºB</h1>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n"
 
 /***/ }),
 
@@ -953,6 +957,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
 
 
 
@@ -965,12 +971,14 @@ var AppComponent = /** @class */ (function () {
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.router = router;
+        this.showSplash = true;
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["timer"])(3000).subscribe(function () { return _this.showSplash = false; });
             _this.splashScreen.hide();
         });
     };
@@ -1196,7 +1204,7 @@ module.exports = "<ion-menu side=\"start\" menuId=\"first\">\r\n    <ion-header>
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".my-custom-menu {\n  --width: 500px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5ncmVzYXIvRDpcXEZlZGVcXEZhY3VcXDR0b1xcQXBsaWNhY2lvbmVzXFxQUFNcXFJlbGV2YW1pZW50b1Zpc3VhbC9zcmNcXGFwcFxcaW5ncmVzYXJcXGluZ3Jlc2FyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksY0FBUSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvaW5ncmVzYXIvaW5ncmVzYXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubXktY3VzdG9tLW1lbnUge1xyXG4gICAgLS13aWR0aDogNTAwcHg7XHJcbiAgfSJdfQ== */"
+module.exports = ".my-custom-menu {\n  --width: 500px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5ncmVzYXIvRDpcXEZlZGVcXEZhY3VcXDR0b1xcQXBsaWNhY2lvbmVzXFxQUFNcXEFwbGljYWNpb25lc1RQXFxSZWxldmFtaWVudG9WaXN1YWwvc3JjXFxhcHBcXGluZ3Jlc2FyXFxpbmdyZXNhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQVEsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2luZ3Jlc2FyL2luZ3Jlc2FyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm15LWN1c3RvbS1tZW51IHtcclxuICAgIC0td2lkdGg6IDUwMHB4O1xyXG4gIH0iXX0= */"
 
 /***/ }),
 
@@ -1318,7 +1326,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Fede\Facu\4to\Aplicaciones\PPS\RelevamientoVisual\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Fede\Facu\4to\Aplicaciones\PPS\AplicacionesTP\RelevamientoVisual\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -142,50 +142,6 @@ var AuthService = /** @class */ (function () {
 
 
 
-/***/ }),
-
-/***/ "./src/app/servicios/usuarios.service.ts":
-/*!***********************************************!*\
-  !*** ./src/app/servicios/usuarios.service.ts ***!
-  \***********************************************/
-/*! exports provided: UsuariosService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosService", function() { return UsuariosService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-
-
-
-
-var UsuariosService = /** @class */ (function () {
-    function UsuariosService(db) {
-        this.db = db;
-    }
-    UsuariosService.prototype.getUsuarios = function () {
-        return this.db.collection('usuarios').snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (users) {
-            return users.map(function (a) {
-                var data = a.payload.doc.data();
-                data.id = a.payload.doc.id;
-                return data;
-            });
-        }));
-    };
-    UsuariosService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
-    ], UsuariosService);
-    return UsuariosService;
-}());
-
-
-
 /***/ })
 
 }]);
