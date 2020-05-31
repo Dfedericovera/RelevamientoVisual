@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 @font-face {
   font-family: 'Courgette';
@@ -17,6 +18,16 @@
   font-weight: normal;
   src: url('http://weloveiconfonts.com/api/fonts/entypo/entypo.eot');
   src: url('http://weloveiconfonts.com/api/fonts/entypo/entypo.eot?#iefix') format('eot'), url('http://weloveiconfonts.com/api/fonts/entypo/entypo.woff') format('woff'), url('http://weloveiconfonts.com/api/fonts/entypo/entypo.ttf') format('truetype'), url('http://weloveiconfonts.com/api/fonts/entypo/entypo.svg#entypo') format('svg');
+}
+
+ion-content{
+  --background:linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f);
+
+}
+
+ion-toolbar{
+    color: rgba(255, 235, 205, 0.699);
+    --background: linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f);
 }
 .entypo-note:before {
   content: "\266a";

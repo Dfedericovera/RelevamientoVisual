@@ -1,8 +1,8 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Ingresar</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 
 <ion-content>
@@ -47,9 +47,13 @@
       <input id="user" type="text" [(ngModel)]='email' placeholder="Correo electronico" />
       <label for="user" class="entypo-user"></label>
     </div>
+    
     <div class="txt">
       <input id="pwd" type="password" [(ngModel)]='password' placeholder="Contraseña" />
       <label for="pwd" class="entypo-lock"></label>
+    </div>
+    <div class="txt" *ngIf="error">
+      <p style="color: red;">  Usuario o clave invalidos</p>
     </div>
     <div class="buttons">
       <input type="button" (click)="onSubmitlogin()" value="Ingresar" />

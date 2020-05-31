@@ -1,10 +1,15 @@
 ion-button{
     position: relative; 
 }
+ion-toolbar{
+    --color: white;
+    --background: linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f);
+}
 
 .grande{
     height: 100%;
     width: 100%;
+    background-image: linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f);
 }
 .img:hover{
     -webkit-box-shadow: 0px 0px 66px -11px rgba(0,0,0,0.67);

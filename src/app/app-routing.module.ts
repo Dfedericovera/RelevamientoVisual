@@ -6,9 +6,9 @@ import { NologinGuard } from "./guards/nologin.guard";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [NologinGuard]},
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule', /* canActivate: [NologinGuard] */},
   { path: 'registrarse', loadChildren: './registrarse/registrarse.module#RegistrarsePageModule' },
   { path: 'cosas-lindas', loadChildren: './cosas-lindas/cosas-lindas.module#CosasLindasPageModule' },
   { path: 'cosas-feas', loadChildren: './cosas-feas/cosas-feas.module#CosasFeasPageModule' },

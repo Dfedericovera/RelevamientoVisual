@@ -25,7 +25,7 @@ export class NologinGuard implements CanActivate {
         }
         else{
           this.router.navigate(['/home']);
-          return false;          
+          return false;
         }
         /* console.log(auth);
         return true; */

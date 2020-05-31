@@ -12,16 +12,12 @@ import { UsuariosService, user } from "../servicios/usuarios.service";
 })
 export class LoginPage implements OnInit {
 
-  /*
-    usuario0 = uncorreo@uncorreo.com, uncorreo
-    usuario1 = usuario1@users.com, usuario1
-    usuario2 = usuario2@users.com, usuario2
-    usuario3 = usuario3@users.com, usuario3
-  */
+
+  error:boolean=false;
   usuarios: any = [];
 
-  email: string = 'uncorreo@uncorreo.com';
-  password: string = 'uncorreo';
+  email: string = 'admin@admin.com';
+  password: string = '111111';
 
   constructor(private router: Router, private authService: AuthService, private usuariosService: UsuariosService) { }
 
@@ -36,9 +32,11 @@ export class LoginPage implements OnInit {
     this.router.navigateByUrl(ruta);
   }
   onSubmitlogin() {
+    
     this.authService.login(this.email, this.password).then(res => {
       this.router.navigateByUrl('/home');
-    }).catch(err => alert('Los datos son incorrectos o no existe el usuario'))
+    })
+    .catch(err => {this.error = true})
   }
 
   llenarFormulario(correo:any,clave:any) {
