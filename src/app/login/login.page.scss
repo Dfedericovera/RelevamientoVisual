@@ -1233,5 +1233,14 @@ div.loginpanel div.hr div:last-child {
 }
 
 ion-content{
-  --background: linear-gradient(to bottom, #000000, #2e2e2e, #585858, #878787, #b9b9b9, #bfbcc4, #c8bfce, #d4c1d6, #bf91ac, #ab6179, #913340, #6b0000);
+  --background: url(../../assets/imagenes/loginBackground.jpg) 0 0/100% 100% no-repeat ;/* 
+  --background: linear-gradient(to bottom, #000000, #2e2e2e, #585858, #878787, #b9b9b9, #bfbcc4, #c8bfce, #d4c1d6, #bf91ac, #ab6179, #913340, #6b0000); */
+}
+
+.spinner{
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: scale(3);
+  z-index: 2;
 }

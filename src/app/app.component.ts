@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterLink } from '@angular/router';
 import { timer } from 'rxjs';
+import { SmartAudio } from './servicios/smart-audio.service';
 
 
 
@@ -20,7 +21,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public router: Router
+    public router: Router,
+    private smartAudio: SmartAudio,
   ) {
     this.initializeApp();
   }
@@ -28,6 +30,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.smartAudio.preload('intro', 'assets/audio/intro.mp3');
       
       timer(3000).subscribe(()=>this.showSplash = false);
 

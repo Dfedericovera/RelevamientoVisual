@@ -6,6 +6,7 @@ import { auth } from 'firebase';
 import { UsuariosService } from '../servicios/usuarios.service';
 import { Platform } from "@ionic/angular";
 import { AlertController } from '@ionic/angular';
+import { SmartAudio } from '../servicios/smart-audio.service';
 
 
 
@@ -25,17 +26,19 @@ interface user {
 export class HomePage implements OnInit {
 
   subscribe: any;
+  
   constructor(
     private platform: Platform,
     private router: Router,
     private authservice: AuthService,
     private usuariosService: UsuariosService,    
     public alertController: AlertController,
+    private smartAudio:SmartAudio,
     ) {
   }
 
   ngOnInit() {
-    
+    this.smartAudio.play('intro');
     this.backButtonEvent();
   }
 

@@ -17,6 +17,8 @@ import { IonSlides } from '@ionic/angular';
 })
 export class CosasLindasPage implements OnInit {
 
+  isWaiting: boolean;
+
   showlike = false;
   like: any = false;
   slide: any;
@@ -43,7 +45,6 @@ export class CosasLindasPage implements OnInit {
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
 
-
   constructor(
     private camera: Camera,
     private firestore: AngularFirestore,
@@ -53,13 +54,14 @@ export class CosasLindasPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isWaiting = true;
     this.actualizarGaleria();
     this.auth.currentUser.subscribe(user => this.usuario = user.email);
     this.usuariosService.getUsuarios().subscribe(usuarios => {this.usuarios= usuarios});
   }
-  ionViewDidEnter() {
+  ionViewDidEnter() {    
+    setTimeout(a=>{ this.switchLikeBotton();this.isWaiting=false; }, 2000);
     
-    setTimeout(a=>{ this.switchLikeBotton() }, 1000);
   }
   //Muestra la camara
   Showcamera() {
@@ -89,7 +91,7 @@ export class CosasLindasPage implements OnInit {
       console.log(data);
     })
   }
-  //Organiza el array de imagenes y el boton
+  //Organiza el array de imagenes de mayor a menor
   actualizarGaleria() {
 
     this.imagenesService.getImagenesLindas().subscribe(imagenes => {

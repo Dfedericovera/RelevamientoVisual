@@ -1,28 +1,21 @@
-<ion-header >
-  <ion-toolbar   ><!-- color="dark" -->
-    <ion-title >Relevamiento Visual
-      <!-- <ion-button size="small" float-right (click)="go('/login')">LOGIN</ion-button> -->
-      <!-- <ion-button [routerLink]="['/login']">ROUTERLINK</ion-button> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title><h4 color="white"><b>Relevamiento Visual</b></h4> 
       <ion-button color="dark" size="small" float-right (click)="onlogout()">DESCONECTARSE</ion-button>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <div class="grande">
     <ion-grid class="grande">
       <ion-row class="grande">
         <ion-col size="6">
-            <!-- <ion-img class="grande" src="./assets/imagenes/cosasLindas.jpg"></ion-img> -->
           <input type="image" routerLink="/cosas-lindas" class="grande img" src="./assets/imagenes/cosasLindas.jpg" />
-<!--           <ion-button color="dark" class="grande"><img src="./assets/imagenes/cosasLindas.jpg"/></ion-button>
- -->        </ion-col>
+        </ion-col>
         <ion-col size="6">
-          <!-- <ion-img class="grande" src="./assets/imagenes/cosasFeas.jpg"></ion-img> -->
           <input type="image" routerLink="/cosas-feas" class="grande img" src="./assets/imagenes/cosasFeas.jpg" />
-<!--           <ion-button color="dark" class="grande"><img src="./assets/imagenes/cosasFeas.jpg"/></ion-button>
- -->        </ion-col>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>

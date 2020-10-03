@@ -4,14 +4,10 @@
       <ion-title>Cosas Feas</ion-title>
     </div>
     <ion-button color="dark" float-right routerLink="/home" class="Atras">
-      <!-- routerLink="/cosas-feas" -->
       <ion-icon slot="start" name="undo"></ion-icon>
       atras
     </ion-button>
-    <!-- camara -->
-    <!-- <p aling="center"><img src="{{MiFoto}}" alt="No se puede mostrar la foto"> </p> -->
     <div>
-      <!-- style="text-align: center;" -->
       <ion-button color="dark" center (click)=Showcamera()>
         <ion-icon slot="start" name="camera"></ion-icon>
         CAMARA
@@ -19,32 +15,26 @@
     </div>
   </ion-toolbar>
 </ion-header>
- <!-- LIKES -->
- <div id="custom-overlay" [style.display]="showlike ? 'flex': 'none'">
-  <div class="flb">
-    <img src="../../assets/imagenes/cora.png">
+<div class="banner">
+  <div class="img">
+    <ion-slides #foto (ionSlideDoubleTap)="likechange()" [options]="sliderOpts"
+      (ionSlideDidChange)="switchLikeBotton()">
+      <ion-slide *ngFor="let img of imagenes">
+        <img src="{{img.id}}" tappable>
+      </ion-slide>
+    </ion-slides>
+    <div style="margin:auto; width: 50%; padding: 10px;">
+      <ion-button color="white" shape="round" fill="clear" color="dark" *ngIf="like" (click)="likechange()">
+        <img src="../../assets/imagenes/liked.png" style=" float: left;    width: 30%;"> <p>No me gusta</p>
+      </ion-button>
+      <ion-button colore="white" shape="round" fill="clear" color="dark" *ngIf="!like" (click)="likechange()">
+        <img src="../../assets/imagenes/dislike.svg"
+          style=" position: relative;   float: left;  width: 40%; z-index: 999;"> <p>Me gusta</p> 
+      </ion-button>
+    </div>
   </div>
+
 </div>
-<!-- SLIDER -->
-<ion-content>
 
-  <!-- pager="true" -->
-  <ion-slides #foto (ionSlideDoubleTap)="likechange()"  [options]="sliderOpts"
-   style="height: 70%;" (ionSlideDidChange)="switchLikeBotton()">
-    <ion-slide  *ngFor="let img of imagenes">
-      <img  src="{{img.id}}" tappable>
-    </ion-slide><!-- (click)="openPreview(img)" -->
-  </ion-slides>
-  <div style="margin:auto; width: 50%; padding: 10px;" >
-    <ion-button shape="round" fill="clear" color="dark" *ngIf="like" (click)="likechange()">
-      <img src="../../assets/imagenes/liked.png" 
-      style="     float: left;    width: 30%;"> No me gusta
-    </ion-button>
-    <ion-button shape="round" fill="clear" color="dark" *ngIf="!like" (click)="likechange()">
-      <img src="../../assets/imagenes/dislike.svg" 
-      style="     float: left;    width: 40%;"> Me gusta
-    </ion-button>
-  </div>
-
-
-</ion-content>
+<!-- Bubbles -->
+<ion-spinner class="spinner" name="bubbles" *ngIf="isWaiting"></ion-spinner>

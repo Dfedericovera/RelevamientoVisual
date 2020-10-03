@@ -16,7 +16,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule, FirestoreSettingsToken } from "@angular/fire/firestore";
 
 import { Camera } from "@ionic-native/camera/ngx";
-
+import { NativeAudio } from "@ionic-native/native-audio/ngx";
+import { SmartAudio } from './servicios/smart-audio.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { Camera } from "@ionic-native/camera/ngx";
     ],
   providers: [
     StatusBar,
-    SplashScreen,Camera,
+    SplashScreen,Camera,NativeAudio,SmartAudio,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {}}
   ],

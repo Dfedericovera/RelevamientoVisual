@@ -14,7 +14,7 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./cosas-feas.page.scss'],
 })
 export class CosasFeasPage implements OnInit {
-
+  isWaiting: boolean;
   showlike = false;
   like: any = false;
   slide: any;
@@ -51,12 +51,13 @@ export class CosasFeasPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isWaiting = true;
     this.actualizarGaleria();
     this.auth.currentUser.subscribe(user => this.usuario = user.email);
     this.usuariosService.getUsuarios().subscribe(usuarios => {this.usuarios= usuarios});
   }
   ionViewDidEnter() {
-    setTimeout(a=>{ this.switchLikeBotton() }, 1000);
+    setTimeout(a=>{ this.switchLikeBotton(); this.isWaiting=false;}, 2000);
   }
   //Muestra la camara
   Showcamera() {

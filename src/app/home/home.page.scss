@@ -2,8 +2,8 @@ ion-button{
     position: relative; 
 }
 ion-toolbar{
-    --color: white;
-    --background: linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f);
+    --background: url(../../assets/imagenes/homebackground3.jpg) 0 0/100% 100% no-repeat ;
+    /* --background: linear-gradient(to bottom, #051937, #40285d, #862d70, #cb306b, #ff4f4f); */
 }
 
 .grande{

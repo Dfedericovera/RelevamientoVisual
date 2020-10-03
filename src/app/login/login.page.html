@@ -1,31 +1,4 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>Ingresar</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
-
 <ion-content>
-
-  <!--   Default Segment OTROS ICONOS DE USUARIOS
-  <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="friends">
-      <ion-fab-button color="light" size="small">1</ion-fab-button>
-    </ion-segment-button>
-    <ion-segment-button value="enemies">
-      <ion-fab-button color="light" size="small">2</ion-fab-button>
-    </ion-segment-button>
-    <ion-segment-button value="asd">
-      <ion-fab-button color="light" size="small">3</ion-fab-button>
-    </ion-segment-button>
-    <ion-segment-button value="qwe">
-      <ion-fab-button color="light" size="small">4</ion-fab-button>
-    </ion-segment-button>
-    <ion-segment-button value="asdasd">
-      <ion-fab-button color="light" size="small">5</ion-fab-button>
-    </ion-segment-button>
-  </ion-segment> -->
-  <!-- <ion-icon name="contact"></ion-icon> Icono -->
   <ion-segment scrollable>
     
     <ion-segment-button (click)="llenarFormulario(user.correo,user.clave)" *ngFor="let user of usuarios">
@@ -76,3 +49,6 @@
   </div>
 
 </ion-content>
+
+<!-- Bubbles -->
+<ion-spinner class="spinner" name="bubbles" *ngIf="isWaiting"></ion-spinner>
