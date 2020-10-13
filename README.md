@@ -1,9 +1,6 @@
-# Tabla-Didactica-de-Idiomas
-Tabla didáctica para niños
-Imagenes de freepik.com
-Sonidos grabados personalmente.
+# Relevamiento Visual
 
-![Image of tablaDidactica](https://firebasestorage.googleapis.com/v0/b/relevamientovisual1.appspot.com/o/RelevamientoVisual.jpg?alt=media&token=9593246f-9000-4a49-b28e-6bbcfa211581)
+![Image of relevamiento](https://firebasestorage.googleapis.com/v0/b/relevamientovisual1.appspot.com/o/RelevamientoVisual.jpg?alt=media&token=9593246f-9000-4a49-b28e-6bbcfa211581)
 
 ## Descripcion :book:
 
@@ -33,9 +30,7 @@ cordova
 
 ### Instalación 🔧
 
-Tomar la apk desde .\platforms\android\app\build\outputs\apk\debug
-
-Para generar otra apk desde la consola: ionic cordova build [platform].
+Para generar apk desde la consola: ionic cordova build [platform].
 
 Ver: (https://ionicframework.com/docs/cli/commands/cordova-build).
 
