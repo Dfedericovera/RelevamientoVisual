@@ -32,7 +32,7 @@
     "cordova-plugin-camera": "4.1.0",
     "core-js": "^2.5.4",
     "firebase": "^5.11.1",
-    "firebase-admin": "^7.3.0",
+    "firebase-admin": "^11.4.1",
     "grpc": "^1.20.2",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
